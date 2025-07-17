@@ -75,6 +75,8 @@ body {
   margin: auto;
   width: 414px;
   height: 896px;
+  background-size: cover;
+  overflow: hidden;
 }
 
 /* Google Fonts */
