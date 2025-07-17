@@ -10,7 +10,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
 }
 .greetings {
   font-size: 6rem;
@@ -69,6 +68,13 @@ body {
   .button a {
     font-size: 0.5rem;
   }
+}
+
+.container {
+  background-image: url("../img/bg.png");
+  margin: auto;
+  width: 414px;
+  height: 896px;
 }
 
 /* Google Fonts */
