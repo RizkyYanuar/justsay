@@ -1,23 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
-    <title>Congratulations</title>
+    <title>Multi Segmen Typewriter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-image: url("/img/bg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+      }
+
+      .overlay-segmen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 100;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .typewriter-text::after {
+        content: "";
+        display: inline-block;
+        width: 2px;
+        height: 1.2em;
+        background: white;
+        margin-left: 2px;
+        animation: blink 0.7s infinite;
+        vertical-align: bottom;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .btn {
+        background: white;
+        color: black;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5rem;
+      }
+
+      .btn:hover {
+        background: #eee;
+      }
+
+      #welcomeModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+      }
+
+      iframe {
+        display: none;
+        width: 100%;
+        max-width: 1000px;
+        height: 600px;
+        border: none;
+        margin-top: 2rem;
+        z-index: 10;
+        position: absolute;
+        z-index: 10000;
+        bottom: 0;
+      }
+
+      audio {
+        display: none;
+      }
+
+      .typewriter-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        max-width: 896px;
+        margin-bottom: 1rem;
+      }
+
+      #heartRain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 999; /* Di bawah bunga (10000) tapi tetap di atas background */
+      }
+
+      .heart {
+        position: absolute;
+        color: red;
+        font-size: 24px;
+        animation: fall linear infinite;
+        animation-timing-function: ease-in;
+        opacity: 0.8;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(50vh) rotate(calc(var(--rotate) / 2)) scale(1.2);
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateY(100vh) rotate(var(--rotate)) scale(0.9);
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   <body>
-    <audio autoplay hidden>
+    <!-- Modal Welcome -->
+    <div id="welcomeModal">
+      <h1>Haloo Sayang ❤️</h1>
+      <p>
+        Selamat yaa udaa lulus ujiann mandirinyaa, kamu keren bangett sayangg
+      </p>
+      <button class="btn" onclick="startSegmen(0)">Mulai</button>
+    </div>
+
+    <!-- Segmen 1 -->
+    <div class="overlay-segmen" id="segmen0">
+      <p class="typewriter-text" id="text0"></p>
+      <button class="btn btn-segmen2" onclick="startSegmen(1)">Next</button>
+    </div>
+
+    <!-- Segmen 2 -->
+    <div class="overlay-segmen" id="segmen1">
+      <p class="typewriter-text" id="text1"></p>
+      <button class="btn" onclick="startSegmen(2)">Next</button>
+    </div>
+
+    <!-- Segmen 3 -->
+    <div class="overlay-segmen" id="segmen2">
+      <p class="typewriter-text" id="text2"></p>
+      <button class="btn" onclick="startSegmen(3)">Next</button>
+    </div>
+
+    <!-- Segmen 4 -->
+    <div class="overlay-segmen" id="segmen3">
+      <p class="typewriter-text" id="text3"></p>
+      <div
+        style="
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        "
+      >
+        <button class="btn" onclick="startSegmen(4)">Sayang</button>
+        <button class="btn" id="btn-engga" onclick="hindariKlik()">
+          Engga
+        </button>
+      </div>
+    </div>
+
+    <!-- Segmen 5 -->
+    <div class="overlay-segmen" id="segmen4">
+      <p class="typewriter-text" id="text4"></p>
+      <button class="btn" onclick="showFlower()">Lihat</button>
+    </div>
+
+    <!-- Flower HTML -->
+    <iframe id="flowerFrame" src="flower.html"></iframe>
+
+    <!-- Musik -->
+    <audio id="bgm">
       <source src="salvatore.mp3" type="audio/mpeg" />
     </audio>
 
-    <div class="container">
-      <p class="cursor typewriter-animation">
-        Hi there, I'm a Typewriter Animation made in pure CSS!
-      </p>
-      <a href="/flower.html">tes ah</a>
-    </div>
+    <div id="heartRain"></div>
+
+    <script>
+      const teks = [
+        `Kamu itu hebat banget sayang. Bisa sampai sejauh ini itu bukan hal yang gampang. Banyak susah sedihnya udaa kamu laluin. Dan aku tau kamu pasti udah berusaha keras banget sampe sekarang❤️`,
+        `Kadang capenya engga kamu liatin ke aku, tapi aku tau kamu jalaninnya nggak mudah. kamu tetap bertahan dan nggak nyerah. I'm so proud of you✨`,
+        `Sekarang waktunya kamu nikmati hasil dari semua perjuangan kamu. Aku bangga punya kamu. Aku sayang sama kamu hariini, esok, dan nanti❤️`,
+        `Kamu sayang sama aku ga?`,
+        `Makasih yaa udah sayang sama aku hehehe :pp. Aku ada sesuatu buat kamuu ni`,
+      ];
+
+      let typingIndex = 0;
+      let charIndex = 0;
+      let typingTarget = null;
+
+      function hindariKlik() {
+        const btn = document.getElementById("btn-engga");
+        const parent = btn.parentElement;
+        const maxX = parent.offsetWidth - btn.offsetWidth;
+        const maxY = parent.offsetHeight - btn.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        btn.style.position = "relative";
+        btn.style.left = `${randomX}px`;
+        btn.style.top = `${randomY}px`;
+      }
+
+      function typeWriter(callback) {
+        if (charIndex < teks[typingIndex].length) {
+          typingTarget.textContent += teks[typingIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(() => typeWriter(callback), 82);
+        } else {
+          if (callback) callback();
+        }
+      }
+
+      function startSegmen(index) {
+        // Jika pertama kali, sembunyikan modal & mainkan musik
+        if (index === 0) {
+          document.getElementById("welcomeModal").style.display = "none";
+          document
+            .getElementById("bgm")
+            .play()
+            .catch(() => {});
+        }
+
+        // Sembunyikan semua segmen
+        const allSegments = document.querySelectorAll(".overlay-segmen");
+        allSegments.forEach((seg) => (seg.style.display = "none"));
+
+        // Reset segmen yang dituju
+        typingIndex = index;
+        charIndex = 0;
+        typingTarget = document.getElementById("text" + index);
+        typingTarget.textContent = "";
+
+        // Tampilkan dan mulai typewriter
+        const segmenEl = document.getElementById("segmen" + index);
+        segmenEl.style.display = "flex";
+        typeWriter();
+      }
+
+      function showFlower() {
+        const allSegments = document.querySelectorAll(".overlay-segmen");
+        allSegments.forEach((seg) => (seg.style.display = "none"));
+        document.getElementById("flowerFrame").style.display = "block";
+      }
+
+      function createHeartRain() {
+        const container = document.getElementById("heartRain");
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+
+        // Posisi dan gaya random
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        heart.style.animationDuration = Math.random() * 2 + 4 + "s";
+
+        // Random horizontal floating + rotate direction
+        heart.style.setProperty(
+          "--rotate",
+          Math.random() > 0.5 ? "360deg" : "-360deg"
+        );
+
+        container.appendChild(heart);
+
+        // Hapus setelah selesai
+        setTimeout(() => heart.remove(), 5000);
+      }
+
+      setInterval(createHeartRain, 1000);
+    </script>
   </body>
 </html>

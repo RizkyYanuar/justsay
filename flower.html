@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>flowers</title>
+    <style>
+      .none {
+        display: none;
+      }
+    </style>
 </head>
 <body class="container">
-  <!-- Pembuat code: https://codepen.io/mdusmanansari/pen/BamepLe -->
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -308,5 +312,11 @@
       </div>
     </div>
     <script src="main.js"></script>
+    <script>
+      const selamat = document.getElementById('selamat');
+      setTimeout(() => {
+        selamat.classList.remove('none');
+      }, 3000)
+    </script>
   </body>
 </html>
