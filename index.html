@@ -75,7 +75,8 @@
         margin: 0 auto;
       }
 
-      .page1, .page2 {
+      .page1,
+      .page2 {
         position: relative;
       }
 
@@ -112,7 +113,7 @@
     />
     <img
       src="./img/butterfly.png"
-      style="width: 30%; position: absolute; top: 13.2rem; left: 2rem"
+      style="width: 30%; position: absolute; top: 13.2rem; left: 1rem"
     />
     <img
       src="./img/cloud.png"
@@ -176,11 +177,56 @@
         </button>
       </div>
       <div class="page2" id="page2">
-        <iframe id="flowerFrame" src="flower.html" style="width: 100%; position: absolute; bottom: 4rem; border: none; height: 100%;"></iframe>
+        <div style="position: absolute; margin: 0 auto; width: 100%; padding: 2rem;">
+          <h2
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              margin-top: 6rem;
+              font-size: 2rem;
+            "
+            id="type1"
+          ></h2>
+          <p
+            id="type2"
+            style="color: #eea1cd; width: 100%; text-align: center"
+          ></p>
+        </div>
+
+        <iframe
+          id="flowerFrame"
+          src="flower.html"
+          style="
+            width: 100%;
+            position: absolute;
+            bottom: 6rem;
+            border: none;
+            height: 140%;
+          "
+        ></iframe>
       </div>
     </div>
 
     <script>
+      let typingIndex = 0;
+      let charIndex = 0;
+      let typingTarget = null;
+      const teks = [
+        "flowers for u, my lovee!",
+        "just like my love for u, this flower will never die :p",
+      ];
+
+      function typeWriter(callback) {
+        if (charIndex < teks[typingIndex].length) {
+          typingTarget.innerHTML += teks[typingIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(() => typeWriter(callback), 90);
+        } else {
+          if (callback) callback();
+        }
+      }
       function startSegmen() {
         const envebot = document.getElementById("envebot");
         const envetop = document.getElementById("envetop");
@@ -199,6 +245,18 @@
           page2.style.display = "block";
 
           // Tambahkan konten ke page2 (opsional)
+          // Jalankan typewriter untuk kedua teks
+          typingIndex = 0;
+          charIndex = 0;
+          typingTarget = document.getElementById("type1");
+          typingTarget.innerHTML = "";
+          typeWriter(() => {
+            typingIndex = 1;
+            charIndex = 0;
+            typingTarget = document.getElementById("type2");
+            typingTarget.innerHTML = "";
+            typeWriter();
+          });
         }
       }
     </script>
