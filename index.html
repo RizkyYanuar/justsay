@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Envelope Animation Only</title>
+    <link rel="stylesheet" href="css/style.css" />
     <style>
       * {
         font-family: "Poppins", sans-serif;
@@ -13,12 +14,13 @@
       }
 
       body {
-        background: #000;
+        background: #fde4f2;
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        overflow: hidden;
+        font-family: "Poppins";
         overflow: hidden;
       }
 
@@ -28,7 +30,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.85);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -66,24 +67,139 @@
         cursor: pointer;
         opacity: 0;
       }
+
+      .container {
+        width: 88%;
+        height: 90vh;
+        background-color: white;
+        margin: 0 auto;
+      }
+
+      .page1, .page2 {
+        position: relative;
+      }
+
+      .page2 {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
     </style>
   </head>
   <body>
     <!-- Modal Welcome -->
     <div id="welcomeModal">
-      <img src="./img/envebot.png" alt="Bottom Envelope" class="envebot" id="envebot" />
-      <img src="./img/envetop.png" alt="Top Envelope" class="envetop" id="envetop" />
-      <button class="btn-welcome" onclick="startSegmen()">Open</button>
+      <img
+        src="./img/envebot.png"
+        alt="Bottom Envelope"
+        class="envebot"
+        id="envebot"
+      />
+      <img
+        src="./img/envetop.png"
+        alt="Top Envelope"
+        class="envetop"
+        id="envetop"
+      />
+      <button class="btn-welcome" onclick="startSegmen()" id="open-btn">
+        Open
+      </button>
+    </div>
+    <img
+      src="./img/love.png"
+      style="width: 30%; position: absolute; top: -2.4rem; left: 0"
+    />
+    <img
+      src="./img/butterfly.png"
+      style="width: 30%; position: absolute; top: 13.2rem; left: 2rem"
+    />
+    <img
+      src="./img/cloud.png"
+      style="width: 30%; position: absolute; top: 22rem; right: 0"
+    />
+    <img
+      src="./img/cloud.png"
+      style="width: 30%; position: absolute; top: 20rem; left: 0"
+    />
+    <img
+      src="./img/cloud.png"
+      style="width: 30%; position: absolute; top: 28rem; left: 2rem"
+    />
+    <img
+      src="./img/coquette.png"
+      style="width: 30%; position: absolute; top: -2.4rem; right: 0"
+    />
+    <div class="container">
+      <div class="page1" id="page1">
+        <img
+          src="./img/happygfday.png"
+          style="width: 100%; position: absolute"
+        />
+        <p
+          style="
+            position: absolute;
+            z-index: 100;
+            margin-top: 84%;
+            text-align: center;
+            width: 100%;
+            color: #eea1cd;
+          "
+        >
+          to the most beautiful <br />
+          person in my life
+        </p>
+        <img
+          src="./img/bunny.png"
+          style="
+            width: 72%;
+            position: absolute;
+            margin-left: 14%;
+            margin-top: 72%;
+          "
+        />
+        <button
+          id="btn-to2"
+          onclick="segmen(1)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            top: 25rem;
+            left: 40%;
+            opacity: 0;
+            z-index: 1000;
+          "
+        >
+          Next Segmen
+        </button>
+      </div>
+      <div class="page2" id="page2">
+        <iframe id="flowerFrame" src="flower.html" style="width: 100%; position: absolute; bottom: 4rem; border: none; height: 100%;"></iframe>
+      </div>
     </div>
 
     <script>
       function startSegmen() {
         const envebot = document.getElementById("envebot");
         const envetop = document.getElementById("envetop");
+        const open = document.getElementById("open-btn");
 
-        // Geser amplop dengan transisi yang halus
         envebot.style.bottom = "-52%";
         envetop.style.top = "-56%";
+        open.style.top = "-56%";
+      }
+
+      function segmen(index) {
+        if (index === 1) {
+          const page1 = document.getElementById("page1");
+          const page2 = document.getElementById("page2");
+          page1.style.display = "none";
+          page2.style.display = "block";
+
+          // Tambahkan konten ke page2 (opsional)
+        }
       }
     </script>
   </body>
