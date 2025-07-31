@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Envelope Animation Only</title>
+    <title>little gift for u</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
       * {
@@ -101,7 +101,7 @@
       }
 
       .slider-track img {
-        height: 240px;
+        height: 160px;
         width: auto;
         margin-right: 10px;
         border-radius: 2px;
@@ -115,6 +115,14 @@
         100% {
           transform: translateX(-50%);
         }
+      }
+
+      .photos {
+        width: 100%;
+        height: 240px;
+        background-color: black;
+        background-image: url("/img/us6.jpg");
+        background-size: cover;
       }
     </style>
   </head>
@@ -312,7 +320,7 @@
               width: 100%;
               color: #eea1cd;
               font-size: 1.8rem;
-              margin-top: -9rem;
+              margin-top: -15rem;
             "
           >
             Our Moment!
@@ -450,10 +458,42 @@
               color: #eea1cd;
               font-size: 1.3rem;
               margin-top: 1rem;
-              margin-left: 4.2rem;
+              margin-left: 2rem;
             "
-           id="type6">
-            
+            id="type6"
+          ></p>
+        </div>
+        <img
+          src="./img/pinkdoll.png"
+          style="width: 80%; position: absolute; bottom: -20px; left: 10%"
+        />
+      </div>
+      <div
+        class="page6"
+        id="page6"
+        style="display: none; width: 100%; height: 100%; position: relative"
+      >
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+          "
+        >
+          <div class="photos"></div>
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.3rem;
+              margin-top: 1rem;
+            "
+            id=""
+          >
+            meeting u was the highlight of my life.
           </p>
         </div>
         <img
@@ -489,9 +529,9 @@
         const envetop = document.getElementById("envetop");
         const open = document.getElementById("open-btn");
         document
-            .getElementById("bgm")
-            .play()
-            .catch(() => {});
+          .getElementById("bgm")
+          .play()
+          .catch(() => {});
 
         envebot.style.bottom = "-52%";
         envetop.style.top = "-56%";
@@ -546,6 +586,16 @@
             typingTarget.innerHTML = "";
             typeWriter();
           });
+        } else if (index === 5) {
+          const page5 = document.getElementById("page5");
+          const page6 = document.getElementById("page6");
+          page5.style.display = "none";
+          page6.style.display = "block";
+          setTimeout(() => {
+            envebot.style.bottom = "0%";
+            envetop.style.top = "0%";
+            open.style.top = "0%";
+          }, 3000);
         }
       }
     </script>
