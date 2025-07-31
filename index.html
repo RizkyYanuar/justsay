@@ -86,9 +86,42 @@
         height: 100%;
         position: relative;
       }
+
+      .slider-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        height: 400px; /* Sesuaikan tinggi gambar */
+      }
+
+      .slider-track {
+        display: flex;
+        width: max-content;
+        animation: scroll-left 15s linear infinite;
+      }
+
+      .slider-track img {
+        height: 240px;
+        width: auto;
+        margin-right: 10px;
+        border-radius: 2px;
+        object-fit: cover;
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
     </style>
   </head>
   <body>
+    <audio id="bgm">
+      <source src="salvatore.mp3" type="audio/mpeg" />
+    </audio>
     <!-- Modal Welcome -->
     <div id="welcomeModal">
       <img
@@ -177,7 +210,25 @@
         </button>
       </div>
       <div class="page2" id="page2">
-        <div style="position: absolute; margin: 0 auto; width: 100%; padding: 2rem;">
+        <button
+          id="btn-to2"
+          onclick="segmen(2)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            z-index: 1000;
+          "
+        >
+          Next Segmen
+        </button>
+        <div
+          style="position: absolute; margin: 0 auto; width: 100%; padding: 2rem"
+        >
           <h2
             style="
               font-family: 'Leckerli One';
@@ -188,7 +239,10 @@
               font-size: 2rem;
             "
             id="type1"
-          ></h2>
+          >
+            flowers for u,<br />
+            my lovee!
+          </h2>
           <p
             id="type2"
             style="color: #eea1cd; width: 100%; text-align: center"
@@ -207,6 +261,206 @@
           "
         ></iframe>
       </div>
+      <div
+        class="page3"
+        id="page3"
+        style="display: none; width: 100%; height: 100%; position: relative"
+      >
+        <button
+          id="btn-to2"
+          onclick="segmen(3)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            opacity: 0;
+            z-index: 1000;
+            bottom: 6rem;
+            left: 40%;
+          "
+        >
+          Next Segmen
+        </button>
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+          "
+        >
+          <div class="slider-container">
+            <div class="slider-track">
+              <img src="./img/us1.jpg" />
+              <img src="./img/us2.jpg" />
+              <img src="./img/us3.jpg" />
+              <img src="./img/us4.jpg" />
+              <img src="./img/us5.jpg" />
+              <!-- Duplikasi agar looping seamless -->
+              <img src="./img/us1.jpg" />
+              <img src="./img/us2.jpg" />
+              <img src="./img/us3.jpg" />
+              <img src="./img/us4.jpg" />
+              <img src="./img/us5.jpg" />
+            </div>
+          </div>
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.8rem;
+              margin-top: -9rem;
+            "
+          >
+            Our Moment!
+          </p>
+          <p
+            id="type3"
+            style="
+              color: #eea1cd;
+              width: 100%;
+              text-align: center;
+              font-size: 11px;
+            "
+          ></p>
+        </div>
+        <img
+          src="./img/pinkdoll.png"
+          style="width: 80%; position: absolute; bottom: -20px; left: 10%"
+        />
+      </div>
+      <div
+        class="page4"
+        id="page4"
+        style="display: none; width: 100%; height: 100%; position: relative"
+      >
+        <button
+          id="btn-to2"
+          onclick="segmen(4)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            opacity: 0;
+            z-index: 1000;
+            bottom: 6rem;
+            left: 40%;
+          "
+        >
+          Next Segmen
+        </button>
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+          "
+        >
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.3rem;
+              margin-top: 1rem;
+              margin-left: -5.6rem;
+              margin-bottom: 1rem;
+            "
+          >
+            Dear Love,
+          </p>
+          <p
+            id="type4"
+            style="
+              color: #eea1cd;
+              width: 100%;
+              text-align: start;
+              font-size: 11px;
+            "
+          ></p>
+        </div>
+        <img
+          src="./img/pinkdoll.png"
+          style="width: 80%; position: absolute; bottom: -20px; left: 10%"
+        />
+      </div>
+      <div
+        class="page5"
+        id="page5"
+        style="display: none; width: 100%; height: 100%; position: relative"
+      >
+        <button
+          id="btn-to2"
+          onclick="segmen(5)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            opacity: 0;
+            z-index: 1000;
+            bottom: 6rem;
+            left: 40%;
+          "
+        >
+          Next Segmen
+        </button>
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+          "
+        >
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.3rem;
+              margin-top: 1rem;
+              margin-left: -5.6rem;
+              margin-bottom: 1rem;
+            "
+          >
+            Dear Love,
+          </p>
+          <p
+            id="type5"
+            style="
+              color: #eea1cd;
+              width: 100%;
+              text-align: start;
+              font-size: 11px;
+            "
+          ></p>
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.3rem;
+              margin-top: 1rem;
+              margin-left: 4.2rem;
+            "
+           id="type6">
+            
+          </p>
+        </div>
+        <img
+          src="./img/pinkdoll.png"
+          style="width: 80%; position: absolute; bottom: -20px; left: 10%"
+        />
+      </div>
     </div>
 
     <script>
@@ -214,15 +468,18 @@
       let charIndex = 0;
       let typingTarget = null;
       const teks = [
-        "flowers for u, my lovee!",
         "just like my love for u, this flower will never die :p",
+        "di momen-momen yang mungkin keliatannya biasa aja, tapi entah kenapa berasa spesial di hati aku. foto-foto ini nyimpen banyak cerita, dari yang receh sampe yang gak pernah kita ceritain ke siapa-siapa. Kadang cape bareng, kadang ketawa ga jelas, kadang cuma saling mandang sambil diem. tapi semuanya selalu terasa cukup, karena ada kamu di situ.",
+        "Makasi uda bertahan sampe sejauh ini ya sayang, pasti banyak hal hal yang perlu kamu lewatin buat jadi diri kamu yang sekarang, aku tau kamu jalaninnya ga semudah yang orang orang pikirin, bahkan uda banyak lika liku kehidupan yang kamu lewatin. meskipun kadang capenya ngga kamu liatin ke aku dan kamu pendem sendiri, tapi aku ngerti kamu uda berusaha dengan segala yang kamu punya sampe titik ini. kamu kuat sayang, i'm so proud of you!",
+        "u are good enough, u are beautiful, u are worthy. nothing is wrong with u. u are who u are supposed to be. jangan lupa buat nikmatin hal hal yang kamu laluin ya sayang, kalo ada apa apa pun kamu jangan takut, ada aku disini, selalu siap buat dengerin kamu. it's time to be proud of all the progress u've made so far. dan selamat jadi anak UNPAS yaa pacarku!.",
+        "Sincerely, ur bf",
       ];
 
       function typeWriter(callback) {
         if (charIndex < teks[typingIndex].length) {
           typingTarget.innerHTML += teks[typingIndex].charAt(charIndex);
           charIndex++;
-          setTimeout(() => typeWriter(callback), 90);
+          setTimeout(() => typeWriter(callback), 82);
         } else {
           if (callback) callback();
         }
@@ -231,6 +488,10 @@
         const envebot = document.getElementById("envebot");
         const envetop = document.getElementById("envetop");
         const open = document.getElementById("open-btn");
+        document
+            .getElementById("bgm")
+            .play()
+            .catch(() => {});
 
         envebot.style.bottom = "-52%";
         envetop.style.top = "-56%";
@@ -248,12 +509,40 @@
           // Jalankan typewriter untuk kedua teks
           typingIndex = 0;
           charIndex = 0;
-          typingTarget = document.getElementById("type1");
+          typingTarget = document.getElementById("type2");
+          typingTarget.innerHTML = "";
+          typeWriter();
+        } else if (index === 2) {
+          const page2 = document.getElementById("page2");
+          const page3 = document.getElementById("page3");
+          page2.style.display = "none";
+          page3.style.display = "block";
+          typingIndex = 1;
+          charIndex = 0;
+          typingTarget = document.getElementById("type3");
+          typeWriter();
+        } else if (index === 3) {
+          const page3 = document.getElementById("page3");
+          const page4 = document.getElementById("page4");
+          page3.style.display = "none";
+          page4.style.display = "block";
+          typingIndex = 2;
+          charIndex = 0;
+          typingTarget = document.getElementById("type4");
+          typeWriter();
+        } else if (index === 4) {
+          const page4 = document.getElementById("page4");
+          const page5 = document.getElementById("page5");
+          page4.style.display = "none";
+          page5.style.display = "block";
+          typingIndex = 3;
+          charIndex = 0;
+          typingTarget = document.getElementById("type5");
           typingTarget.innerHTML = "";
           typeWriter(() => {
-            typingIndex = 1;
+            typingIndex = 4;
             charIndex = 0;
-            typingTarget = document.getElementById("type2");
+            typingTarget = document.getElementById("type6");
             typingTarget.innerHTML = "";
             typeWriter();
           });

@@ -346,3 +346,69 @@
     </script>
   </body>
 </html>
+
+
+
+<div
+        class="page4"
+        id="page4"
+        style="display: none; width: 100%; height: 100%; position: relative"
+      >
+        <button
+          id="btn-to2"
+          onclick="segmen(3)"
+          style="
+            width: 4rem;
+            height: 4rem;
+            background-color: white;
+            position: absolute;
+            opacity: 0;
+            z-index: 1000;
+            bottom: 6rem;
+            left: 40%;
+          "
+        >
+          Next Segmen
+        </button>
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+          "
+        >
+          <div class="slider-container">
+            <div class="slider-track">
+              <img src="./img/her1.jpg" />
+              <img src="./img/her2.jpg" />
+              <img src="./img/her3.jpg" />
+              <img src="./img/her4.jpg" />
+              <img src="./img/her5.jpg" />
+              <!-- Duplikasi agar looping seamless -->
+              <img src="./img/her1.jpg" />
+              <img src="./img/her2.jpg" />
+              <img src="./img/her3.jpg" />
+              <img src="./img/her4.jpg" />
+              <img src="./img/her5.jpg" />
+            </div>
+          </div>
+          <p
+            style="
+              font-family: 'Leckerli One';
+              text-align: center;
+              width: 100%;
+              color: #eea1cd;
+              font-size: 1.8rem;
+              margin-top: -9rem;
+            "
+          >
+            my favorite photo of u
+          </p>
+          
+        </div>
+        <img
+          src="./img/pinkdoll.png"
+          style="width: 80%; position: absolute; bottom: -20px; left: 10%"
+        />
+      </div>
